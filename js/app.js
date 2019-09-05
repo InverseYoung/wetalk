@@ -17,7 +17,7 @@ $(function () {
     } else {
         userid = getGuidGenerator();
     }
-    var ws = new WebSocket("ws://211.149.133.37:8888/im/" + userid);
+    var wsUrl = "ws://211.149.133.37:8888/im/" + userid;
     $('body').on('click', '.startTalk', function () {
         $('.aui-tips-title').html('正在建立通信...');
         $('.talk-process-tips').fadeIn();
@@ -30,7 +30,20 @@ $(function () {
             $('.talk-send-box').fadeIn(500);
             $('.talk-list').fadeIn(500);
         }, 1000);
+        init();
     });
+    function init(){
+        ws = new WebSocket(wsUrl);
+        ws.onopen = function () {
+        };
+        ws.onmessage = function (evt) {
+            onMessage(evt);
+        };
+        ws.onclose = function () {
+        };
+        ws.onerror = function () {
+        };
+    }
     $('body').on('click', '.endTalk', function () {
         $('.aui-tips-title').html('正在断开...');
         $('.talk-process-tips').fadeIn();
@@ -45,7 +58,7 @@ $(function () {
         }, 1000);
         ws.close();
     });
-    ws.onmessage = function (evt) {
+    function onMessage(evt) {
         var html = '<div class="aui-chat-item aui-chat-left">';
         html += '<div class="aui-chat-inner">';
         html += '<div class="aui-chat-name">对方 </div>';
