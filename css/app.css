@@ -1,0 +1,44 @@
+body{
+    background-image: url("../image/bg.jpg");
+    background-size: cover;
+}
+.logo{
+    text-align: center;
+    margin-top: 4rem;
+}
+.talk-btn{
+    margin: 1rem auto 0 auto;
+    width: 8rem;
+}
+.talk-send-box{
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #ffffff;
+}
+.talk-send-input{
+    margin-right: 1rem;
+    border: 1px solid #03a9f4;
+}
+.talk-send-input input{
+    padding: 0.5rem;
+}
+.talk-send-btn{
+    cursor: pointer;
+    background: #03a9f4;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+    color: #ffffff;
+}
+.aui-tips{
+    position: absolute;
+    top: 0;
+}
+.talk-list{
+    margin: 0 1rem 4.8rem 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
