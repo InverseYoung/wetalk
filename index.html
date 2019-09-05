@@ -12,13 +12,14 @@
 <div class="logo">
     <img src="image/logo.png">
 </div>
-<div class="aui-btn aui-btn-info aui-btn-block talk-btn startTalk">开始聊天</div>
+<div class="aui-btn aui-btn-info aui-btn-block talk-btn startTalk" id="route">开始聊天</div>
 <div class="talk-list" style="display: none">
     <section class="aui-chat">
 
     </section>
 </div>
 <div class="aui-row talk-send-box" style="display: none">
+    <span id="sending" style="display: none">对方正在输入...</span>
     <div class="aui-col-xs-10">
         <div class="talk-send-input">
             <input type="text" id="talk-content" placeholder="请您输入..."></input>

@@ -17,9 +17,17 @@ body{
     width: 100%;
     background: #ffffff;
 }
+.talk-send-box #sending{
+    position: absolute;
+    left: 1rem;
+    top: 2px;
+    font-size: 12px;
+    color: #cccccc;
+}
 .talk-send-input{
     margin-right: 1rem;
     border: 1px solid #03a9f4;
+    position: relative;
 }
 .talk-send-input input{
     padding: 0.5rem;
