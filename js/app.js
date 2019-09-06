@@ -35,21 +35,21 @@ $(function () {
         console.log('d', d.errorCode);
         if (d.errorCode == '11'){
             showTips('正在匹配中...');
+            addStaus('正在匹配中...(可点击按钮取消)', 0);
             $('#route').removeClass('startTalk').addClass('stopMatch').removeClass('aui-btn-info').addClass('aui-btn-warning');
             $('#route').html('匹配中..');
         } else if(d.errorCode == '22'){
             showTips('匹配成功，开始聊天吧');
+            addStaus('匹配成功，开始聊天吧', 1);
             $('#route').removeClass('aui-btn-warning').addClass('aui-btn-danger');
             $('#route').addClass('endTalk').html('结束聊天');
             $('.talk-send-box').fadeIn(500);
             $('.talk-list').fadeIn(500);
+            logoScorll(0);
         } else if(d.errorCode == '99'){
-            showTips('对方已断开，请重新匹配。');
-            $('#route').removeClass('aui-btn-danger').addClass('aui-btn-info');
-            $('#route').removeClass('endTalk').addClass('startTalk').html('开始聊天');
-            $('.talk-send-box').fadeOut(500);
-            $('.aui-chat').empty();
-            $('.talk-list').fadeOut(500);
+            showTips('对方已断开，请您重新匹配');
+            addStaus('对方已断开，请您重新匹配', 2);
+            resetTalk();
             ws.close();
         } else {
             if (d.returnObject[0] === '[*+-sending-+*]'){
@@ -70,6 +70,11 @@ $(function () {
             $('.talk-process-tips').fadeOut(500);
         }, 1500);
     }
+    function addStaus(text, type){
+        var t = type || 0;
+        var h = '<div class="status-'+t+'">'+text+'</div>';
+        $('.talk-status').append(h);
+    }
     function newMessage(data){
         var html = '<div class="aui-chat-item aui-chat-left">';
         html += '<div class="aui-chat-inner">';
@@ -86,10 +91,26 @@ $(function () {
         $('.aui-chat').append(html);
         scrollLast();
     }
+    function logoScorll(t){
+        if (t === 0){
+            $('.logo').animate({marginTop: 0}, 'slow');
+        } else {
+            $('.logo').animate({marginTop: '4rem'}, 'slow');
+        }
+    }
     function scrollLast(){
         $('html, body').animate({
             scrollTop: $('html, body').height()
         }, 'slow');
+    }
+    function resetTalk(){
+        $("#route").removeClass('aui-btn-danger').addClass('aui-btn-info');
+        $("#route").removeClass('endTalk').addClass('startTalk').html('开始聊天');
+        $('.talk-send-box').fadeOut(500);
+        $('.aui-chat').empty();
+        $('.talk-status').empty();
+        $('.talk-list').fadeOut(500);
+        logoScorll(1);
     }
     $('body').on('click', '.startTalk', function () {
         init();
@@ -98,15 +119,12 @@ $(function () {
         showTips('正在取消匹配...');
         $('#route').removeClass('stopMatch').addClass('startTalk').removeClass('aui-btn-warning').addClass('aui-btn-info');
         $('#route').html('开始聊天');
+        $('.talk-status').empty();
         ws.close();
     });
     $('body').on('click', '.endTalk', function () {
         $('.aui-tips-title').html('正在断开...');
-        $("#route").removeClass('aui-btn-danger').addClass('aui-btn-info');
-        $("#route").removeClass('endTalk').addClass('startTalk').html('开始聊天');
-        $('.talk-send-box').fadeOut(500);
-        $('.aui-chat').empty();
-        $('.talk-list').fadeOut(500);
+        resetTalk();
         ws.close();
     });
     $('.talk-send-btn').on('click', function () {

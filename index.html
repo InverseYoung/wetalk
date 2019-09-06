@@ -2,20 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>夜枭匿名聊</title>
+    <meta name="description" content="匿名聊天">
+    <meta name="keywords" content="匿名聊天,夜宵匿名聊,匿名聊">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
     <link rel="stylesheet" type="text/css" href="css/aui.2.0.css" />
     <link rel="stylesheet" type="text/css" href="css/app.css" />
     <script src="js/comm/jquery.min.js"></script>
     <script src="js/app.js"></script>
 </head>
 <body>
-<div class="logo">
-    <img src="image/logo.png">
+<div class="header">
+    <div class="logo">
+        <img src="image/logo.png">
+    </div>
+    <div class="aui-btn aui-btn-info aui-btn-block talk-btn startTalk" id="route">开始聊天</div>
+    <div class="talk-status"></div>
 </div>
-<div class="aui-btn aui-btn-info aui-btn-block talk-btn startTalk" id="route">开始聊天</div>
 <div class="talk-list" style="display: none">
     <section class="aui-chat">
-
     </section>
 </div>
 <div class="aui-row talk-send-box" style="display: none">

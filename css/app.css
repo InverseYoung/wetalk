@@ -2,6 +2,11 @@ body{
     background-image: url("../image/bg.jpg");
     background-size: cover;
 }
+.header{
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
 .logo{
     text-align: center;
     margin-top: 4rem;
@@ -49,4 +54,18 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
+}
+.talk-status{
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 12px;
+}
+.talk-status div.status-0{
+    color: #333333;
+}
+.talk-status div.status-1{
+    color: #03a9f4;
+}
+.talk-status div.status-2{
+    color: #e51c23;
 }
