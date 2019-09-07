@@ -105,7 +105,7 @@ $(function () {
     }
     function resetTalk(){
         $("#route").removeClass('aui-btn-danger').addClass('aui-btn-info');
-        $("#route").removeClass('endTalk').addClass('startTalk').html('开始聊天');
+        $("#route").removeClass('endTalk').removeClass('stopMatch').addClass('startTalk').html('开始聊天');
         $('.talk-send-box').fadeOut(500);
         $('.aui-chat').empty();
         $('.talk-status').empty();
@@ -123,6 +123,11 @@ $(function () {
         ws.close();
     });
     $('body').on('click', '.endTalk', function () {
+        $('.aui-tips-title').html('正在断开...');
+        resetTalk();
+        ws.close();
+    });
+    $('.talk-unlink-btn').on('click', function () {
         $('.aui-tips-title').html('正在断开...');
         resetTalk();
         ws.close();
