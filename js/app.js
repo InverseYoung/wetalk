@@ -133,7 +133,7 @@ $(function () {
             ws.send(data);
             var html = '<div class="aui-chat-item aui-chat-right">';
             html += '<div class="aui-chat-inner">';
-            html += '<div class="aui-chat-name">你 </div>';
+            html += '<div class="aui-chat-name">我 </div>';
             html += '<div class="aui-chat-content">';
             html += '<div class="aui-chat-arrow"></div>';
             html += data;
